@@ -1,0 +1,36 @@
+server:
+  port: 8989                            # 项目访问端口，默认 8989
+  servlet:                                 # 项目访问路径，默认 /
+    context-path: /bank
+
+spring:
+  # 数据源
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/tb_table?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    # 指定 druid 连接池以及 druid 连接池配置
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 1                       # 初始连接数
+      max-active: 20                        # 最大连接数
+      max-idle: 20                          # 最大空闲
+      min-idle: 1                           # 最小空闲
+      max-wait: 60000
+  # 文件上传
+  servlet:
+    multipart:
+      max-file-size: 100MB                  # 设置单个上传文件的大小
+      max-request-size: 1000MB               # 设置一次请求上传文件的总容量
+# MyBatis
+mybatis:
+  # 配置 MyBatis数据返回类型别名(默认别名是类名)
+  type-aliases-package: com.xxxx.bank.pojo
+  # 配置 MyBatis Mapper 映射文件
+  mapper-locations: classpath:mapper/*.xml
+
+# Mybatis SQL 打印(方法接口所在的包，不是 Mapper.xml 所在的包)
+logging:
+  level:
+    com.xxxx.manager.mapper: debug
