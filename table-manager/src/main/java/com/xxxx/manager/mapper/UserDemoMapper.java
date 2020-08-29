@@ -2,7 +2,7 @@ package com.xxxx.manager.mapper;
 
 import com.xxxx.manager.pojo.UserDemo;
 import com.xxxx.manager.pojo.UserDemoExample;
-
+import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface UserDemoMapper {
@@ -20,9 +20,9 @@ public interface UserDemoMapper {
 
     UserDemo selectByPrimaryKey(Integer id);
 
-    int updateByExampleSelective(UserDemo record, UserDemoExample example);
+    int updateByExampleSelective(@Param("record")UserDemo record, @Param("example")UserDemoExample example);
 
-    int updateByExample(UserDemo record, UserDemoExample example);
+    int updateByExample(@Param("record")UserDemo record,@Param("example")UserDemoExample example);
 
     int updateByPrimaryKeySelective(UserDemo record);
 

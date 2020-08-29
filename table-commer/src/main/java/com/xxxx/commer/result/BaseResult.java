@@ -1,7 +1,8 @@
 package com.xxxx.commer.result;
 
 import com.github.pagehelper.PageInfo;
-import com.xxxx.bank.enums.BaseResultEnum;
+
+import com.xxxx.commer.enums.BaseResultEnum;
 
 import java.io.Serializable;
 

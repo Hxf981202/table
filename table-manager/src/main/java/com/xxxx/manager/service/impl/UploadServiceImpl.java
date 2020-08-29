@@ -7,10 +7,12 @@ import com.qiniu.storage.Region;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.util.Auth;
 import com.xxxx.commer.result.FileResult;
+import com.xxxx.manager.service.UploadService;
+import org.springframework.stereotype.Service;
 
 import java.io.InputStream;
-
-public class UploadService implements com.xxxx.manager.service.UploadService {
+@Service
+public class UploadServiceImpl implements UploadService {
     @Override
     public FileResult upload(InputStream inputStream, String fileName) {
         FileResult result = new FileResult();

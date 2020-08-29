@@ -1,7 +1,7 @@
 server:
   port: 8989                            # 项目访问端口，默认 8989
   servlet:                                 # 项目访问路径，默认 /
-    context-path: /bank
+    context-path: /table
 
 spring:
   # 数据源
@@ -26,7 +26,7 @@ spring:
 # MyBatis
 mybatis:
   # 配置 MyBatis数据返回类型别名(默认别名是类名)
-  type-aliases-package: com.xxxx.bank.pojo
+  type-aliases-package: com.xxxx.manager.pojo
   # 配置 MyBatis Mapper 映射文件
   mapper-locations: classpath:mapper/*.xml
 

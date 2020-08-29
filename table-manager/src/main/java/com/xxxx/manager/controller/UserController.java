@@ -1,8 +1,11 @@
 package com.xxxx.manager.controller;
 
 import com.xxxx.commer.result.BaseResult;
+import com.xxxx.commer.result.FileResult;
 import com.xxxx.manager.pojo.UserDemo;
 import com.xxxx.manager.pojo.UserDemoExample;
+import com.xxxx.manager.service.SendSmsService;
+import com.xxxx.manager.service.UploadService;
 import com.xxxx.manager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,11 +20,16 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 @CrossOrigin(origins = "*")
-@Controller
+@RestController
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private SendSmsService sendSmsService;
+    @Autowired
+    private UploadService uploadService;
     @ResponseBody
     @RequestMapping("/hello")
     public String hello(){
@@ -33,13 +41,13 @@ public class UserController {
      * @return
      */
     @RequestMapping("/list")
-    public BaseResult accountAdd(@RequestBody Integer pageNum,Integer pageSize){
+    public BaseResult userlist(@RequestBody Integer pageNum,Integer pageSize){
 
         return userService.selectUserList(pageNum,pageSize);
     }
 
     @RequestMapping("delete/{id}")
-    public BaseResult accountdelete(@PathVariable Integer id ){
+    public BaseResult userdelete(@PathVariable Integer id ){
         return userService.deleteUserById(id);
 
     }
@@ -68,6 +76,7 @@ public class UserController {
         }
 
         return sendSmsService.sendSms(phone, request);
+    }
         @RequestMapping("upload")
         private FileResult upload (String photo, MultipartFile file) throws IOException {
             FileResult fileResult = null;

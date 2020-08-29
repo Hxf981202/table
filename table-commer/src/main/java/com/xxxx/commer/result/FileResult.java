@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * @see(功能介绍) : 公共的文件上传返回对象
  * @version(版本号) : 1.0
- * @author(创建人) : zhoubin
+ * @author(创建人) : hxf
  * @since : JDK 1.8
  */
 public class FileResult implements Serializable {

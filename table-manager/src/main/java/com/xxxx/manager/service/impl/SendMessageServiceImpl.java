@@ -27,12 +27,12 @@ public class SendMessageServiceImpl implements SendSmsService {
      */
     @Override
     public BaseResult sendSms(String phoneNum, HttpServletRequest request) {
-        int appid = 1400365043;
-        String appkey = "92ab2a9508b1cc96935a0d4acbc6b6c2";
+        int appid = 1400418630;
+        String appkey = "nKehW4KIbcMinb7U4LVN4T8Vcp1xe6Py";
         String[] phoneNumbers = {phoneNum}; //手机号可以添很多。
-        int templateId = 598600;
-        String smsSign = "小小伯乐无君愁";
-    System.out.println("进来了1");
+        int templateId = 309046;
+        String smsSign = "好好学习";
+    System.out.println("1");
         try {
             //第一个参数传递{1}位置想要的内容，第二个传递{2}的内容，以此类推。具体看步骤5
             String code = CodeUtil.getCode();
@@ -40,7 +40,7 @@ public class SendMessageServiceImpl implements SendSmsService {
             SmsSingleSender ssender = new SmsSingleSender(appid, appkey);
             SmsSingleSenderResult result = ssender.sendWithParam("86", phoneNumbers[0],
                     templateId, params, smsSign, "", "");
-            System.out.println("进来了2");
+            System.out.println("2");
       System.out.println(result);
             if(result.errMsg.equals("OK")){
                 //将code值存储
@@ -48,7 +48,7 @@ public class SendMessageServiceImpl implements SendSmsService {
                 session.setAttribute("code",code);
                 //TimerTask实现5分钟后从session中删除checkCode
                 final Timer timer=new Timer();
-                System.out.println("进来了3");
+                System.out.println("3");
                 timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
